@@ -3,13 +3,13 @@ package me.nickpierson.SortSeer;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import me.nickpierson.Utils.Constants;
+import me.nickpierson.Utils.Point;
 
 public class View extends JFrame {
 
@@ -66,24 +66,15 @@ public class View extends JFrame {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
-			g.setColor(Color.CYAN);
-
 			// draw points (as skyscrapers...)
-			int[] points = model.getPoints();
+			Point[] points = model.getPoints();
 			for (int i = 0; i < points.length; i++) {
-				int pointY = getHeight() - points[i];
+				g.setColor(points[i].getColor());
+				int pointY = getHeight() - points[i].getValue();
 				g.fillRect(i * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
 			}
 
 			g.setColor(Color.RED);
-
-			// draw selected points
-			ArrayList<Integer> selectedPoints = model.getSelected();
-			for (Integer point : selectedPoints) {
-				int selected = point.intValue();
-				int pointY = getHeight() - points[selected];
-				g.fillRect(selected * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
-			}
 
 			g.setColor(Color.WHITE);
 

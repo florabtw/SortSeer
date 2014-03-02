@@ -1,5 +1,7 @@
 package me.nickpierson.Sorts;
 
+import me.nickpierson.Utils.Point;
+
 public class SelectionSort extends Sort {
 
 	@Override
@@ -8,27 +10,30 @@ public class SelectionSort extends Sort {
 	}
 
 	@Override
-	protected void sort(int[] values) {
+	protected void sort(Point[] values) {
 		for (int j = 0; j < values.length - 1; j++) {
 			int minIndex = j;
-			selected.add(minIndex);
+			values[minIndex].setSelected();
 			for (int i = j + 1; i < values.length; i++) {
-				selected.add(i);
+				values[i].setSelected();
 				comparisons++;
-				if (values[i] < values[minIndex]) {
-					selected.remove(Integer.valueOf(minIndex));
+				if (values[i].getValue() < values[minIndex].getValue()) {
+					values[minIndex].reset();
 					minIndex = i;
-					selected.add(minIndex);
+					values[minIndex].setSelected();
 				}
 
 				if (!isSorting) {
-					selected.clear();
+					values[i].reset();
+					values[minIndex].reset();
 					return;
 				}
 
 				sleep();
 
-				selected.remove(Integer.valueOf(i));
+				if (i != minIndex) {
+					values[i].reset();
+				}
 			}
 
 			if (minIndex != j) {
@@ -36,7 +41,7 @@ public class SelectionSort extends Sort {
 				swap(values, j, minIndex);
 			}
 
-			selected.clear();
+			values[j].reset();
 		}
 	}
 }

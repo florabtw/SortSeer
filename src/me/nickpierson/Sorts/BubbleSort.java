@@ -1,5 +1,7 @@
 package me.nickpierson.Sorts;
 
+import me.nickpierson.Utils.Point;
+
 public class BubbleSort extends Sort {
 
 	@Override
@@ -8,16 +10,16 @@ public class BubbleSort extends Sort {
 	}
 
 	@Override
-	protected void sort(int[] values) {
+	protected void sort(Point[] values) {
 		boolean swapped;
 		for (int j = values.length - 1; j > 0; j--) {
 			swapped = false;
 			for (int i = 0; i < j; i++) {
-				selected.add(i);
-				selected.add(i + 1);
+				values[i].setSelected();
+				values[i + 1].setSelected();
 				comparisons++;
 
-				if (values[i] > values[i + 1]) {
+				if (values[i].getValue() > values[i + 1].getValue()) {
 					swaps++;
 					swap(values, i, i + 1);
 					swapped = true;
@@ -25,13 +27,15 @@ public class BubbleSort extends Sort {
 
 				// stop sorting if flag is ever false
 				if (!isSorting) {
-					selected.clear();
+					values[i].reset();
+					values[i + 1].reset();
 					return;
 				}
 
 				sleep();
 
-				selected.clear();
+				values[i].reset();
+				values[i + 1].reset();
 			}
 
 			if (!swapped) {

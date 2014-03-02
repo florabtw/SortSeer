@@ -1,17 +1,15 @@
 package me.nickpierson.Sorts;
 
-import java.util.ArrayList;
-
 import me.nickpierson.SortSeer.Model;
+import me.nickpierson.Utils.Point;
 
 public abstract class Sort {
 
 	Model.Speed speed;
 	protected boolean isSorting = false;
 	protected int swaps, comparisons;
-	protected ArrayList<Integer> selected = new ArrayList<Integer>();
 
-	public void run(final int[] values, Model.Speed speed) {
+	public void run(final Point[] values, Model.Speed speed) {
 		this.speed = speed;
 		isSorting = true;
 		swaps = comparisons = 0;
@@ -26,8 +24,8 @@ public abstract class Sort {
 		thread.start();
 	}
 
-	public synchronized void swap(int[] values, int index1, int index2) {
-		int temp = values[index1];
+	public synchronized void swap(Point[] values, int index1, int index2) {
+		Point temp = values[index1];
 		values[index1] = values[index2];
 		values[index2] = temp;
 	}
@@ -44,10 +42,6 @@ public abstract class Sort {
 		isSorting = false;
 	}
 
-	public ArrayList<Integer> getSelected() {
-		return selected;
-	}
-
 	public int getSwaps() {
 		return swaps;
 	}
@@ -60,7 +54,7 @@ public abstract class Sort {
 		return isSorting;
 	}
 
-	protected abstract void sort(int[] values);
+	protected abstract void sort(Point[] values);
 
 	public abstract String getName();
 }

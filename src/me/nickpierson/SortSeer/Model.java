@@ -1,6 +1,5 @@
 package me.nickpierson.SortSeer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -8,6 +7,7 @@ import me.nickpierson.Sorts.BubbleSort;
 import me.nickpierson.Sorts.SelectionSort;
 import me.nickpierson.Sorts.Sort;
 import me.nickpierson.Utils.Constants;
+import me.nickpierson.Utils.Point;
 
 public class Model {
 
@@ -31,7 +31,7 @@ public class Model {
 		}
 	}
 
-	private int[] points = new int[Constants.NUM_POINTS];
+	private Point[] points = new Point[Constants.NUM_POINTS];
 	private Random myRand = new Random();
 	private Speed sortSpeed = Speed.OFF;
 
@@ -41,7 +41,13 @@ public class Model {
 	private int currSort = 0;
 
 	public Model() {
-		resetPoints();
+		initPoints();
+	}
+
+	public void initPoints() {
+		for (int i = 0; i < points.length; i++) {
+			points[i] = new Point(myRand.nextInt(points.length) + 1);
+		}
 	}
 
 	public void sort() {
@@ -71,7 +77,7 @@ public class Model {
 	public void resetPoints() {
 		if (!sorts[currSort].isSorting()) {
 			for (int i = 0; i < points.length; i++) {
-				points[i] = myRand.nextInt(points.length) + 1;
+				points[i].setValue(myRand.nextInt(points.length) + 1);
 			}
 		}
 	}
@@ -82,10 +88,6 @@ public class Model {
 
 	public String getSpeed() {
 		return sortSpeed.getName();
-	}
-
-	public ArrayList<Integer> getSelected() {
-		return new ArrayList<Integer>(sorts[currSort].getSelected());
 	}
 
 	public int getSwaps() {
@@ -108,7 +110,7 @@ public class Model {
 		}
 	}
 
-	public int[] getPoints() {
+	public Point[] getPoints() {
 		return Arrays.copyOf(points, points.length);
 	}
 }
