@@ -9,10 +9,10 @@ public class BubbleSort extends Sort {
 
 	@Override
 	protected void sort(int[] values) {
-		boolean swapped = true;
-		while (swapped) {
+		boolean swapped;
+		for (int j = values.length - 1; j > 0; j--) {
 			swapped = false;
-			for (int i = 0; i < values.length - 1; i++) {
+			for (int i = 0; i < j; i++) {
 				selected.add(i);
 				selected.add(i + 1);
 				comparisons++;
@@ -32,6 +32,10 @@ public class BubbleSort extends Sort {
 				sleep();
 
 				selected.clear();
+			}
+
+			if (!swapped) {
+				break;
 			}
 		}
 	}
