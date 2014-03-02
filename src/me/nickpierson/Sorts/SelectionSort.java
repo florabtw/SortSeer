@@ -10,7 +10,7 @@ public class SelectionSort extends Sort {
 	}
 
 	@Override
-	public void sort(int[] values) {
+	protected void sort(int[] values) {
 		// temporary of course
 		Arrays.sort(values);
 	}

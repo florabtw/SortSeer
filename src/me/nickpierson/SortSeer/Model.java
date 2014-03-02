@@ -20,7 +20,7 @@ public class Model {
 	}
 
 	public void sort() {
-		sorts[currSort].sort(points);
+		sorts[currSort].run(points);
 	}
 
 	public void nextSort() {

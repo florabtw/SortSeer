@@ -1,7 +1,5 @@
 package me.nickpierson.Sorts;
 
-import java.util.Arrays;
-
 public class BubbleSort extends Sort {
 
 	@Override
@@ -10,8 +8,25 @@ public class BubbleSort extends Sort {
 	}
 
 	@Override
-	public void sort(int[] values) {
-		// ha
-		Arrays.sort(values);
+	protected void sort(int[] values) {
+		boolean swapped = true;
+		while (swapped) {
+			swapped = false;
+			for (int i = 0; i < values.length - 1; i++) {
+				if (values[i] > values[i + 1]) {
+					// should happen atomically
+					int temp = values[i];
+					values[i] = values[i + 1];
+					values[i + 1] = temp;
+					swapped = true;
+				}
+
+				try {
+					Thread.sleep(1);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 }

@@ -12,7 +12,7 @@ public abstract class Sort {
 		thread.start();
 	}
 
-	public abstract void sort(int[] values);
+	protected abstract void sort(int[] values);
 
 	public abstract String getName();
 }
