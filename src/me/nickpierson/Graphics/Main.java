@@ -1,4 +1,8 @@
+package me.nickpierson.Graphics;
+
 import javax.swing.JFrame;
+
+import me.nickpierson.Utils.PointManager;
 
 public class Main {
 

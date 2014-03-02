@@ -1,8 +1,13 @@
+package me.nickpierson.Graphics;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+
+import me.nickpierson.Utils.Constants;
+import me.nickpierson.Utils.PointManager;
 
 public class Screen extends JPanel {
 

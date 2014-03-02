@@ -1,3 +1,5 @@
+package me.nickpierson.Utils;
+
 import java.util.Random;
 
 public class PointManager {
