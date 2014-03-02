@@ -3,6 +3,7 @@ package me.nickpierson.SortSeer;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -72,6 +73,15 @@ public class View extends JFrame {
 			for (int i = 0; i < points.length; i++) {
 				int pointY = getHeight() - points[i];
 				g.fillRect(i * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
+			}
+
+			g.setColor(Color.RED);
+
+			// draw selected points
+			ArrayList<Integer> selectedPoints = model.getSelected();
+			for (int point : selectedPoints) {
+				int pointY = getHeight() - points[point];
+				g.fillRect(point * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
 			}
 
 			g.setColor(Color.WHITE);

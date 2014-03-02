@@ -13,7 +13,10 @@ public class BubbleSort extends Sort {
 		while (swapped) {
 			swapped = false;
 			for (int i = 0; i < values.length - 1; i++) {
+				selected.add(i);
+				selected.add(i + 1);
 				comparisons++;
+
 				if (values[i] > values[i + 1]) {
 					swaps++;
 					swap(values, i, i + 1);
@@ -22,10 +25,13 @@ public class BubbleSort extends Sort {
 
 				// stop sorting if flag is ever false
 				if (!isSorting) {
+					selected.clear();
 					return;
 				}
 
 				sleep();
+
+				selected.clear();
 			}
 		}
 	}

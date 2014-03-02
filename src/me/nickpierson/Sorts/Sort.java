@@ -1,5 +1,7 @@
 package me.nickpierson.Sorts;
 
+import java.util.ArrayList;
+
 import me.nickpierson.SortSeer.Model;
 
 public abstract class Sort {
@@ -7,6 +9,7 @@ public abstract class Sort {
 	Model.Speed speed;
 	protected boolean isSorting = false;
 	protected int swaps, comparisons;
+	protected ArrayList<Integer> selected = new ArrayList<Integer>();
 
 	public void run(final int[] values, Model.Speed speed) {
 		this.speed = speed;
@@ -39,6 +42,10 @@ public abstract class Sort {
 
 	public void stop() {
 		isSorting = false;
+	}
+
+	public ArrayList<Integer> getSelected() {
+		return selected;
 	}
 
 	public int getSwaps() {

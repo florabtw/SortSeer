@@ -1,5 +1,6 @@
 package me.nickpierson.SortSeer;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import me.nickpierson.Sorts.BubbleSort;
@@ -80,6 +81,10 @@ public class Model {
 
 	public String getSpeed() {
 		return sortSpeed.getName();
+	}
+
+	public ArrayList<Integer> getSelected() {
+		return sorts[currSort].getSelected();
 	}
 
 	public int getSwaps() {
