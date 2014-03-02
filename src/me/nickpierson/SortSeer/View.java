@@ -79,9 +79,10 @@ public class View extends JFrame {
 
 			// draw selected points
 			ArrayList<Integer> selectedPoints = model.getSelected();
-			for (int point : selectedPoints) {
-				int pointY = getHeight() - points[point];
-				g.fillRect(point * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
+			for (Integer point : selectedPoints) {
+				int selected = point.intValue();
+				int pointY = getHeight() - points[selected];
+				g.fillRect(selected * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
 			}
 
 			g.setColor(Color.WHITE);

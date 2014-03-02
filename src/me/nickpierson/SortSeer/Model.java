@@ -1,6 +1,7 @@
 package me.nickpierson.SortSeer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import me.nickpierson.Sorts.BubbleSort;
@@ -84,7 +85,7 @@ public class Model {
 	}
 
 	public ArrayList<Integer> getSelected() {
-		return sorts[currSort].getSelected();
+		return new ArrayList<Integer>(sorts[currSort].getSelected());
 	}
 
 	public int getSwaps() {
@@ -108,6 +109,6 @@ public class Model {
 	}
 
 	public int[] getPoints() {
-		return points;
+		return Arrays.copyOf(points, points.length);
 	}
 }
