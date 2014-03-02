@@ -91,13 +91,18 @@ public class View extends JFrame {
 			int sortSpeedWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), sortSpeed);
 			g.drawString(sortSpeed, getWidth() - 20 - sortSpeedWidth, 40);
 
+			// draw time
+			long sortTime = model.getSortTime();
+			String time = String.format("Time: %02d:%02d:%03d", sortTime / 60000, (sortTime / 1000) % 60, sortTime % 1000);
+			g.drawString(time, 20, 20);
+
 			// draw comparisons
 			String comparisons = String.format("Comparisons: %d", model.getComparisons());
 			g.drawString(comparisons, 20, 40);
 
 			// draw swaps
 			String swaps = String.format("Swaps: %d", model.getSwaps());
-			g.drawString(swaps, 20, 20);
+			g.drawString(swaps, 20, 60);
 		}
 	}
 }

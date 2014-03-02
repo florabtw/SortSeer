@@ -33,6 +33,8 @@ public class Model {
 	private Random myRand = new Random();
 	private Speed sortSpeed = Speed.OFF;
 
+	private long startTime, endTime;
+
 	private Sort[] sorts = { new BubbleSort(), new SelectionSort() };
 	private int currSort = 0;
 
@@ -42,6 +44,7 @@ public class Model {
 
 	public void sort() {
 		if (!sorts[currSort].isSorting()) {
+			startTime = System.currentTimeMillis();
 			sorts[currSort].run(points, sortSpeed);
 		}
 	}
@@ -85,6 +88,18 @@ public class Model {
 
 	public int getComparisons() {
 		return sorts[currSort].getComparisons();
+	}
+
+	public long getSortTime() {
+		if (sorts[currSort].isSorting()) {
+			return System.currentTimeMillis() - startTime;
+		} else {
+			if (endTime < startTime) {
+				endTime = System.currentTimeMillis();
+			}
+
+			return endTime - startTime;
+		}
 	}
 
 	public int[] getPoints() {
