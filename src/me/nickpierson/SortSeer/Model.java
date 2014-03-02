@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import me.nickpierson.Sorts.BubbleSort;
+import me.nickpierson.Sorts.InsertionSort;
 import me.nickpierson.Sorts.SelectionSort;
 import me.nickpierson.Sorts.Sort;
 import me.nickpierson.Utils.Constants;
@@ -37,7 +38,7 @@ public class Model {
 
 	private long startTime, endTime;
 
-	private Sort[] sorts = { new BubbleSort(), new SelectionSort() };
+	private Sort[] sorts = { new BubbleSort(), new SelectionSort(), new InsertionSort() };
 	private int currSort = 0;
 
 	public Model() {

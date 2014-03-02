@@ -54,7 +54,7 @@ public abstract class Sort {
 		return isSorting;
 	}
 
-	protected abstract void sort(Point[] values);
+	protected abstract void sort(Point[] points);
 
 	public abstract String getName();
 }
