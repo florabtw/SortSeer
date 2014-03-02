@@ -6,10 +6,12 @@ public abstract class Sort {
 
 	Model.Speed speed;
 	protected boolean isSorting = false;
+	protected int swaps, comparisons;
 
 	public void run(final int[] values, Model.Speed speed) {
 		this.speed = speed;
 		isSorting = true;
+		swaps = comparisons = 0;
 
 		Thread thread = new Thread(new Runnable() {
 			@Override
@@ -37,6 +39,14 @@ public abstract class Sort {
 
 	public void stop() {
 		isSorting = false;
+	}
+
+	public int getSwaps() {
+		return swaps;
+	}
+
+	public int getComparisons() {
+		return comparisons;
 	}
 
 	public boolean isSorting() {

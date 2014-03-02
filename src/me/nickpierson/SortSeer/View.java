@@ -65,16 +65,18 @@ public class View extends JFrame {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
+			g.setColor(Color.CYAN);
+
 			// draw points (as skyscrapers...)
 			int[] points = model.getPoints();
-			g.setColor(Color.CYAN);
 			for (int i = 0; i < points.length; i++) {
 				int pointY = getHeight() - points[i];
 				g.fillRect(i * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
 			}
 
-			// draw sort name
 			g.setColor(Color.WHITE);
+
+			// draw sort name
 			String sortName = model.getSortName();
 			int nameWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), sortName);
 			g.drawString(sortName, getWidth() / 2 - (nameWidth / 2), 20);
@@ -88,6 +90,14 @@ public class View extends JFrame {
 			String sortSpeed = "Sort Speed: " + model.getSpeed();
 			int sortSpeedWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), sortSpeed);
 			g.drawString(sortSpeed, getWidth() - 20 - sortSpeedWidth, 40);
+
+			// draw comparisons
+			String comparisons = String.format("Comparisons: %d", model.getComparisons());
+			g.drawString(comparisons, 20, 40);
+
+			// draw swaps
+			String swaps = String.format("Swaps: %d", model.getSwaps());
+			g.drawString(swaps, 20, 20);
 		}
 	}
 }

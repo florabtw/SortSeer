@@ -63,6 +63,14 @@ public class Model {
 		sorts[currSort].stop();
 	}
 
+	public void resetPoints() {
+		if (!sorts[currSort].isSorting()) {
+			for (int i = 0; i < points.length; i++) {
+				points[i] = myRand.nextInt(points.length) + 1;
+			}
+		}
+	}
+
 	public String getSortName() {
 		return sorts[currSort].getName();
 	}
@@ -71,12 +79,12 @@ public class Model {
 		return sortSpeed.getName();
 	}
 
-	public void resetPoints() {
-		if (!sorts[currSort].isSorting()) {
-			for (int i = 0; i < points.length; i++) {
-				points[i] = myRand.nextInt(points.length) + 1;
-			}
-		}
+	public int getSwaps() {
+		return sorts[currSort].getSwaps();
+	}
+
+	public int getComparisons() {
+		return sorts[currSort].getComparisons();
 	}
 
 	public int[] getPoints() {
