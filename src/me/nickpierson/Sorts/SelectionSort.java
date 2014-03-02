@@ -10,38 +10,40 @@ public class SelectionSort extends Sort {
 	}
 
 	@Override
-	protected void sort(Point[] values) {
-		for (int j = 0; j < values.length - 1; j++) {
+	protected void sort(Point[] points) {
+		for (int j = 0; j < points.length - 1; j++) {
 			int minIndex = j;
-			values[minIndex].setSelected();
-			for (int i = j + 1; i < values.length; i++) {
-				values[i].setSelected();
+			points[minIndex].setSelected();
+			for (int i = j + 1; i < points.length; i++) {
+				points[i].setSelected();
 				comparisons++;
-				if (values[i].getValue() < values[minIndex].getValue()) {
-					values[minIndex].reset();
+				if (points[i].getValue() < points[minIndex].getValue()) {
+					points[minIndex].deselect();
 					minIndex = i;
-					values[minIndex].setSelected();
+					points[minIndex].setSelected();
 				}
 
 				if (!isSorting) {
-					values[i].reset();
-					values[minIndex].reset();
+					points[i].deselect();
+					points[minIndex].deselect();
 					return;
 				}
 
 				sleep();
 
 				if (i != minIndex) {
-					values[i].reset();
+					points[i].deselect();
 				}
 			}
 
 			if (minIndex != j) {
 				swaps++;
-				swap(values, j, minIndex);
+				swap(points, j, minIndex);
 			}
 
-			values[j].reset();
+			points[j].setCompleted();
 		}
+
+		points[points.length - 1].setCompleted();
 	}
 }

@@ -10,35 +10,40 @@ public class BubbleSort extends Sort {
 	}
 
 	@Override
-	protected void sort(Point[] values) {
+	protected void sort(Point[] points) {
 		boolean swapped;
-		for (int j = values.length - 1; j > 0; j--) {
+		for (int j = points.length - 1; j > 0; j--) {
 			swapped = false;
 			for (int i = 0; i < j; i++) {
-				values[i].setSelected();
-				values[i + 1].setSelected();
+				points[i].setSelected();
+				points[i + 1].setSelected();
 				comparisons++;
 
-				if (values[i].getValue() > values[i + 1].getValue()) {
+				if (points[i].getValue() > points[i + 1].getValue()) {
 					swaps++;
-					swap(values, i, i + 1);
+					swap(points, i, i + 1);
 					swapped = true;
 				}
 
 				// stop sorting if flag is ever false
 				if (!isSorting) {
-					values[i].reset();
-					values[i + 1].reset();
+					points[i].deselect();
+					points[i + 1].deselect();
 					return;
 				}
 
 				sleep();
 
-				values[i].reset();
-				values[i + 1].reset();
+				points[i].deselect();
+				points[i + 1].deselect();
 			}
 
+			points[j].setCompleted();
+
 			if (!swapped) {
+				for (Point point : points) {
+					point.setCompleted();
+				}
 				break;
 			}
 		}

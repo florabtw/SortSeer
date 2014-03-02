@@ -11,7 +11,7 @@ public class Point {
 		setValue(value);
 	}
 
-	public void reset() {
+	public void deselect() {
 		color = Color.CYAN;
 	}
 

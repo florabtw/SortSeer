@@ -78,6 +78,7 @@ public class Model {
 		if (!sorts[currSort].isSorting()) {
 			for (int i = 0; i < points.length; i++) {
 				points[i].setValue(myRand.nextInt(points.length) + 1);
+				points[i].deselect();
 			}
 		}
 	}
