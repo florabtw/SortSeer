@@ -25,6 +25,6 @@ public class Controller implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		model.resetPoints();
+		model.sort();
 	}
 }
