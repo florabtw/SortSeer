@@ -5,7 +5,7 @@ import me.nickpierson.SortSeer.Model;
 public abstract class Sort {
 
 	Model.Speed speed;
-	private boolean isSorting;
+	protected boolean isSorting = false;
 
 	public void run(final int[] values, Model.Speed speed) {
 		this.speed = speed;
@@ -33,6 +33,10 @@ public abstract class Sort {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void stop() {
+		isSorting = false;
 	}
 
 	public boolean isSorting() {

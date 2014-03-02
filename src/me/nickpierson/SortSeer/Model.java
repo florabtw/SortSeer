@@ -59,6 +59,10 @@ public class Model {
 		}
 	}
 
+	public void stopSorting() {
+		sorts[currSort].stop();
+	}
+
 	public String getSortName() {
 		return sorts[currSort].getName();
 	}

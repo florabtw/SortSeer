@@ -18,6 +18,11 @@ public class BubbleSort extends Sort {
 					swapped = true;
 				}
 
+				// stop sorting if flag is ever false
+				if (!isSorting) {
+					return;
+				}
+
 				sleep();
 			}
 		}
