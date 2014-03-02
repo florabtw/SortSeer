@@ -14,10 +14,7 @@ public class BubbleSort extends Sort {
 			swapped = false;
 			for (int i = 0; i < values.length - 1; i++) {
 				if (values[i] > values[i + 1]) {
-					// should happen atomically
-					int temp = values[i];
-					values[i] = values[i + 1];
-					values[i + 1] = temp;
+					swap(values, i, i + 1);
 					swapped = true;
 				}
 
