@@ -7,24 +7,26 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class View {
+import me.nickpierson.Utils.Constants;
+
+public class View extends JFrame {
 
 	Model model;
 
 	public View(Model model) {
 		this.model = model;
 
-		JFrame frame = new JFrame("Title here");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("SortSeer");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Screen screen = new Screen();
-		frame.getContentPane().add(screen);
+		getContentPane().add(screen);
 
 		screen.start();
 
-		frame.pack();
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
 	public class Screen extends JPanel {
