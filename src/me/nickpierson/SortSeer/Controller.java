@@ -30,6 +30,9 @@ public class Controller implements KeyListener {
 			model.nextSort();
 			break;
 		case KeyEvent.VK_S:
+			model.nextSpeed();
+			break;
+		case KeyEvent.VK_ENTER:
 			model.sort();
 			break;
 		}

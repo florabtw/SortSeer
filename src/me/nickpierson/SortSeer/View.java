@@ -78,6 +78,16 @@ public class View extends JFrame {
 			String sortName = model.getSortName();
 			int nameWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), sortName);
 			g.drawString(sortName, getWidth() / 2 - (nameWidth / 2), 20);
+
+			// draw number of points
+			String numPoints = String.format("Number of Points: %d", Constants.NUM_POINTS);
+			int numPointsWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), numPoints);
+			g.drawString(numPoints, getWidth() - 20 - numPointsWidth, 20);
+
+			// draw current sort speed
+			String sortSpeed = "Sort Speed: " + model.getSpeed();
+			int sortSpeedWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), sortSpeed);
+			g.drawString(sortSpeed, getWidth() - 20 - sortSpeedWidth, 40);
 		}
 	}
 }
