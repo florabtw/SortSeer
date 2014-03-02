@@ -9,17 +9,23 @@ import me.nickpierson.Utils.Constants;
 
 public class Model {
 
-	private enum Speed {
-		OFF("Off"), FAST("Fast"), MEDIUM("Medium"), SLOW("Slow");
+	public enum Speed {
+		OFF("Off", 0), FAST("Fast", 1), MEDIUM("Medium", 10), SLOW("Slow", 20);
 
 		private String name;
+		private int sleepTime;
 
-		private Speed(String name) {
+		private Speed(String name, int millis) {
 			this.name = name;
+			this.sleepTime = millis;
 		}
 
 		public String getName() {
 			return name;
+		}
+
+		public int getSleepTime() {
+			return sleepTime;
 		}
 	}
 
@@ -35,7 +41,7 @@ public class Model {
 	}
 
 	public void sort() {
-		sorts[currSort].run(points);
+		sorts[currSort].run(points, sortSpeed);
 	}
 
 	public void nextSort() {

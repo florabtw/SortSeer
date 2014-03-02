@@ -1,8 +1,14 @@
 package me.nickpierson.Sorts;
 
+import me.nickpierson.SortSeer.Model;
+
 public abstract class Sort {
 
-	public void run(final int[] values) {
+	Model.Speed speed;
+
+	public void run(final int[] values, Model.Speed speed) {
+		this.speed = speed;
+
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -16,6 +22,14 @@ public abstract class Sort {
 		int temp = values[index1];
 		values[index1] = values[index2];
 		values[index2] = temp;
+	}
+
+	public void sleep() {
+		try {
+			Thread.sleep(speed.getSleepTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected abstract void sort(int[] values);

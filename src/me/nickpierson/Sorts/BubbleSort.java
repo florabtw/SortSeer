@@ -18,11 +18,7 @@ public class BubbleSort extends Sort {
 					swapped = true;
 				}
 
-				try {
-					Thread.sleep(1);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				sleep();
 			}
 		}
 	}
