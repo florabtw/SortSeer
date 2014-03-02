@@ -6,12 +6,13 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import me.nickpierson.Utils.Constants;
 
 public class View extends JFrame {
 
-	Model model;
+	private Model model;
 
 	public View(Model model) {
 		this.model = model;
@@ -71,6 +72,12 @@ public class View extends JFrame {
 				int pointY = getHeight() - points[i];
 				g.fillRect(i * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
 			}
+
+			// draw sort name
+			g.setColor(Color.WHITE);
+			String sortName = model.getSortName();
+			int nameWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), sortName);
+			g.drawString(sortName, getWidth() / 2 - (nameWidth / 2), 20);
 		}
 	}
 }

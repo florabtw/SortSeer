@@ -13,4 +13,6 @@ public abstract class Sort {
 	}
 
 	public abstract void sort(int[] values);
+
+	public abstract String getName();
 }

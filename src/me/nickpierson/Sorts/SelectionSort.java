@@ -2,16 +2,16 @@ package me.nickpierson.Sorts;
 
 import java.util.Arrays;
 
-public class BubbleSort extends Sort {
+public class SelectionSort extends Sort {
 
 	@Override
 	public String getName() {
-		return "Bubble Sort";
+		return "Selection Sort";
 	}
 
 	@Override
 	public void sort(int[] values) {
-		// ha
+		// temporary of course
 		Arrays.sort(values);
 	}
 }

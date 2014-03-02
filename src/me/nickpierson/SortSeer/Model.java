@@ -3,16 +3,17 @@ package me.nickpierson.SortSeer;
 import java.util.Random;
 
 import me.nickpierson.Sorts.BubbleSort;
+import me.nickpierson.Sorts.SelectionSort;
 import me.nickpierson.Sorts.Sort;
 import me.nickpierson.Utils.Constants;
 
 public class Model {
 
-	int[] points = new int[Constants.NUM_POINTS];
-	Random myRand = new Random();
+	private int[] points = new int[Constants.NUM_POINTS];
+	private Random myRand = new Random();
 
-	Sort[] sorts = { new BubbleSort() };
-	int currSort = 0;
+	private Sort[] sorts = { new BubbleSort(), new SelectionSort() };
+	private int currSort = 0;
 
 	public Model() {
 		resetPoints();
@@ -20,6 +21,14 @@ public class Model {
 
 	public void sort() {
 		sorts[currSort].sort(points);
+	}
+
+	public void nextSort() {
+		currSort = (currSort + 1) % sorts.length;
+	}
+
+	public String getSortName() {
+		return sorts[currSort].getName();
 	}
 
 	public void resetPoints() {

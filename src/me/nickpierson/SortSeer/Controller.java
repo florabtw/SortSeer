@@ -5,8 +5,8 @@ import java.awt.event.KeyListener;
 
 public class Controller implements KeyListener {
 
-	Model model;
-	View view;
+	private Model model;
+	private View view;
 
 	public Controller(Model model, View view) {
 		this.model = model;
@@ -25,6 +25,13 @@ public class Controller implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		model.sort();
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_N:
+			model.nextSort();
+			break;
+		case KeyEvent.VK_S:
+			model.sort();
+			break;
+		}
 	}
 }
