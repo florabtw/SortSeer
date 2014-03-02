@@ -41,16 +41,22 @@ public class Model {
 	}
 
 	public void sort() {
-		sorts[currSort].run(points, sortSpeed);
+		if (!sorts[currSort].isSorting()) {
+			sorts[currSort].run(points, sortSpeed);
+		}
 	}
 
 	public void nextSort() {
-		currSort = (currSort + 1) % sorts.length;
+		if (!sorts[currSort].isSorting()) {
+			currSort = (currSort + 1) % sorts.length;
+		}
 	}
 
 	public void nextSpeed() {
-		Speed[] allSpeeds = Speed.values();
-		sortSpeed = allSpeeds[(sortSpeed.ordinal() + 1) % allSpeeds.length];
+		if (!sorts[currSort].isSorting()) {
+			Speed[] allSpeeds = Speed.values();
+			sortSpeed = allSpeeds[(sortSpeed.ordinal() + 1) % allSpeeds.length];
+		}
 	}
 
 	public String getSortName() {
@@ -62,8 +68,10 @@ public class Model {
 	}
 
 	public void resetPoints() {
-		for (int i = 0; i < points.length; i++) {
-			points[i] = myRand.nextInt(points.length) + 1;
+		if (!sorts[currSort].isSorting()) {
+			for (int i = 0; i < points.length; i++) {
+				points[i] = myRand.nextInt(points.length) + 1;
+			}
 		}
 	}
 

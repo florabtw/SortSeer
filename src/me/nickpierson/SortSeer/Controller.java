@@ -26,11 +26,14 @@ public class Controller implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_N:
+		case KeyEvent.VK_SPACE:
 			model.nextSort();
 			break;
 		case KeyEvent.VK_S:
 			model.nextSpeed();
+			break;
+		case KeyEvent.VK_R:
+			model.resetPoints();
 			break;
 		case KeyEvent.VK_ENTER:
 			model.sort();
