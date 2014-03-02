@@ -1,4 +1,4 @@
-package me.nickpierson.Utils;
+package me.nickpierson.SortSeer;
 public class Constants {
 
 	public static final int NUM_POINTS = 300;

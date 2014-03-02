@@ -1,13 +1,13 @@
-package me.nickpierson.Utils;
+package me.nickpierson.SortSeer;
 
 import java.util.Random;
 
-public class PointManager {
+public class Model {
 
 	int[] points = new int[Constants.NUM_POINTS];
 	Random myRand = new Random();
 
-	public PointManager() {
+	public Model() {
 		resetPoints();
 	}
 
