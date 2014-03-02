@@ -6,8 +6,11 @@ import javax.swing.JPanel;
 
 public class Screen extends JPanel {
 
-	public Screen() {
-		setPreferredSize(new Dimension(500, 500));
+	PointManager pm;
+
+	public Screen(PointManager pm) {
+		setPreferredSize(new Dimension(Constants.NUM_POINTS * Constants.POINT_WIDTH, Constants.NUM_POINTS * 2));
+		this.pm = pm;
 	}
 
 	public void start() {
@@ -35,7 +38,16 @@ public class Screen extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
+		// set background to black
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, getWidth(), getHeight());
+
+		// draw points (as skyscrapers...)
+		int[] points = pm.getPoints();
+		g.setColor(Color.CYAN);
+		for (int i = 0; i < points.length; i++) {
+			int pointY = getHeight() - points[i];
+			g.fillRect(i * Constants.POINT_WIDTH, pointY, Constants.POINT_WIDTH, getHeight() - pointY);
+		}
 	}
 }

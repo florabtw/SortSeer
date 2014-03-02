@@ -14,4 +14,8 @@ public class PointManager {
 			points[i] = myRand.nextInt(points.length) + 1;
 		}
 	}
+
+	public int[] getPoints() {
+		return points;
+	}
 }
