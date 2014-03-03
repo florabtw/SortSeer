@@ -5,22 +5,22 @@ import java.awt.Color;
 public class Point {
 
 	private int value;
-	private Color color = Color.CYAN;
+	private Color color = Constants.DEFAULT;
 
 	public Point(int value) {
 		setValue(value);
 	}
 
 	public void deselect() {
-		color = Color.CYAN;
+		color = Constants.DEFAULT;
 	}
 
 	public void setSelected() {
-		color = Color.RED;
+		color = Constants.SELECTED;
 	}
 
 	public void setCompleted() {
-		color = Color.GREEN;
+		color = Constants.COMPLETED;
 	}
 
 	public void setValue(int value) {
