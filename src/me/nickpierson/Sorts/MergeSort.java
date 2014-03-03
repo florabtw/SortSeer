@@ -52,8 +52,6 @@ public class MergeSort extends Sort {
 				points[rightIndex].setSelected();
 			}
 
-			sleep();
-
 			if (leftIndex != middle && rightIndex != end) {
 				comparisons++;
 			}
@@ -68,6 +66,8 @@ public class MergeSort extends Sort {
 				toDeselect = rightIndex;
 				rightIndex++;
 			}
+
+			sleep();
 
 			points[toDeselect].deselect();
 		}
