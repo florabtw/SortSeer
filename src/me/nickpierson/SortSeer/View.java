@@ -14,6 +14,7 @@ import me.nickpierson.Utils.Point;
 public class View extends JFrame {
 
 	private Model model;
+	private boolean showHelp = false;
 
 	public View(Model model) {
 		this.model = model;
@@ -29,6 +30,14 @@ public class View extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
+	}
+
+	public void setShowHelp(boolean showHelp) {
+		this.showHelp = showHelp;
+	}
+
+	public boolean getShowHelp() {
+		return showHelp;
 	}
 
 	public class Screen extends JPanel {
@@ -80,8 +89,7 @@ public class View extends JFrame {
 
 			// draw sort name
 			String sortName = model.getSortName();
-			int nameWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), sortName);
-			g.drawString(sortName, getWidth() / 2 - (nameWidth / 2), 20);
+			drawCenteredString(sortName, g, 20);
 
 			// draw number of points
 			String numPoints = String.format("Number of Points: %d", Constants.NUM_POINTS);
@@ -105,6 +113,23 @@ public class View extends JFrame {
 			// draw swaps
 			String swaps = String.format("Swaps: %d", model.getSwaps());
 			g.drawString(swaps, 20, 60);
+
+			// draw help
+			String help = "Press 'h' to toggle help";
+			g.drawString(help, 20, 100);
+
+			if (showHelp) {
+				drawCenteredString("Press 's' to change sort", g, 100);
+				drawCenteredString("Press 'v' to change speed", g, 120);
+				drawCenteredString("Press 'r' to reset points", g, 140);
+				drawCenteredString("Press 'x' to stop sorting", g, 160);
+				drawCenteredString("Press 'Space' to start sorting", g, 180);
+			}
+		}
+
+		private void drawCenteredString(String text, Graphics g, int y) {
+			int textWidth = SwingUtilities.computeStringWidth(g.getFontMetrics(), text);
+			g.drawString(text, getWidth() / 2 - (textWidth / 2), y);
 		}
 	}
 }
