@@ -21,6 +21,7 @@ public class View extends JFrame {
 
 		setTitle("SortSeer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 
 		Screen screen = new Screen();
 		getContentPane().add(screen);
